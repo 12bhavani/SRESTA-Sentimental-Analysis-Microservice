@@ -18,8 +18,8 @@ print(data)
 
 le = LabelEncoder()
 y = data['label'].values
-# sw = set(stopwords.words('english'))
-# ps = PorterStemmer()
+sw = set(stopwords.words('english'))
+ps = PorterStemmer()
 tfidf = TfidfTransformer()
 cv = CountVectorizer()
 
@@ -30,7 +30,7 @@ def cleaning_text(sample):
     sample = sample.replace("<br /><br >", "")
     sample = re.sub("[^a-zA-Z]+", " ", sample)
     sample = sample.split()
-    # sample = [ps.stem(s) for s in sample if s not in sw]
+    sample = [ps.stem(s) for s in sample if s not in sw]
     sample = " ".join(sample)
     return sample
 
@@ -61,7 +61,7 @@ y_train = y[1600:]
 X_train = X_train.sorted_indices()
 X_val = X_val.sorted_indices()
 # inscribing the model into fit method
-history = model.fit(X_train, y_train, epochs=20, batch_size=64, shuffle=True, validation_data=(X_val, y_val))
+history = model.fit(X_train, y_train, epochs=30, batch_size=64, shuffle=True, validation_data=(X_val, y_val))
 # save the model
 model.save('saved_model.h5')
 # load the saved model
@@ -69,26 +69,26 @@ loaded_model = load_model('saved_model.h5')
 
 # testing part of the model
 # load the test-data
-data = pd.read_csv(r'C:\Users\DELL\Downloads\setit\test12.csv')
+# data = pd.read_csv(r'C:\Users\DELL\Downloads\setit\test12.csv')
 # storing the test data into a test variable
-test = pd.read_csv('test12.csv')
-test.shape
-test.head()
-test['clean_text'] = test['text'].apply(cleaning_text)
-X_test = test['clean_text']
-X_test = cv.transform(X_test)
-X_test = tfidf.transform(X_test)
-X_test = X_test.sorted_indices()
-y_pred = model.predict(X_test)
-y_pred
-y_test = test['label']
+# test = pd.read_csv('test12.csv')
+# test.shape
+# test.head()
+# test['clean_text'] = test['text'].apply(cleaning_text)
+# X_test = test['clean_text']
+# X_test = cv.transform(X_test)
+# X_test = tfidf.transform(X_test)
+# X_test = X_test.sorted_indices()
+# y_pred = model.predict(X_test)
+# y_pred
+# y_test = test['label']
 # Convert SparseTensor to dense numpy array
-X_test = X_test.toarray()
+# X_test = X_test.toarray()
 # Evaluate model on test data
-test_loss, test_acc = model.evaluate(X_test, y_test)
+# test_loss, test_acc = model.evaluate(X_test, y_test)
 # Print test accuracy
-print('Test accuracy:', test_acc)
-print('loss : ', test_loss)
+# print('Test accuracy:', test_acc)
+# print('loss : ', test_loss)
 
 
 # predict method which works on the saved model
