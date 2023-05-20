@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Result Page</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <!-- code for timelapse between user interface page and website redirection -->
+  <script>
+    function delayRedirect(url, delay)
+    {
+      setTimeout(function()
+      {
+        window.location.href = url;
+      }, delay);
+    }
+  </script>
+</head>
+<body>
+  <!-- code for user interface message -->
+  <h1>According to my prediction</h1>
+  <br>
+  <h2>You seems to be {{emotion}}</h2>
+    {% if emotion == 'angry' %}
+       <h2>Let me suggest you some songs</h2>
+       <h2>Hope you get refresh and relax</h2>
+    {% elif emotion == 'joy' %}
+       <h2>I suggest you to play games</h2>
+       <h2>Let your happiness become double by winning a game</h2>
+    {% elif emotion == 'sadness' %}
+       <h2>Let me share a joke with you</h2>
+       <h2>Hope you change your mood and have some laugh</h2>
+    {% elif emotion == 'love' %}
+       <h2>Their are plenty of thing to watch</h2>
+       <h2>Select and do watch one ,</h2>
+       <h2>then enjoy a heartwarming story that celebrates love</h2>
+    {% elif emotion == 'fear' %}
+       <h2>Oh, don't worry. I can make you feel better</h2>
+       <h2>Here are the list of stories, check through them </h2>
+       <h2>Hope you enjoy and have fun</h2>
+    {% elif emotion == 'surprise' %}
+       <h2>Well there might be some reason behind your surprise</h2>
+       <h2>Why don't yu share with others</h2>
+       <h2>i suggest a place where you can share your thoughts anonymously</h2>
+    {% endif %}
+  <script>
+    // path given for redirecting to webpages based on sentiment
+    {% if emotion == 'angry' %}
+      delayRedirect("https://open.spotify.com/", 7000);
+    {% elif emotion == 'joy' %}
+      delayRedirect("https://poki.com/", 7000);
+    {% elif emotion == 'sadness' %}
+      delayRedirect("https://www.rd.com/funny/jokes/?_humor=jokes",7000);
+    {% elif emotion == 'love' %}
+      delayRedirect("https://www.hotstar.com/in/home?ref=%2Fin", 7000);
+    {% elif emotion == 'fear' %}
+      delayRedirect("https://english.pratilipi.com/", 7000);
+    {% elif emotion == 'surprise' %}
+      delayRedirect("https://novni.com/write-anonymously", 7000);
+    {% endif %}
+  </script>
+</body>
+</html>
