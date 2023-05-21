@@ -38,23 +38,23 @@
        <h2>Hope you enjoy and have fun</h2>
     {% elif emotion == 'surprise' %}
        <h2>Well there might be some reason behind your surprise</h2>
-       <h2>Why don't yu share with others</h2>
+       <h2>Why don't you share with others</h2>
        <h2>i suggest a place where you can share your thoughts anonymously</h2>
     {% endif %}
   <script>
     // path given for redirecting to webpages based on sentiment
     {% if emotion == 'angry' %}
-      delayRedirect("https://open.spotify.com/", 7000);
+      delayRedirect("https://open.spotify.com/", 5000);
     {% elif emotion == 'joy' %}
-      delayRedirect("https://poki.com/", 7000);
+      delayRedirect("https://poki.com/", 5000);
     {% elif emotion == 'sadness' %}
-      delayRedirect("https://www.rd.com/funny/jokes/?_humor=jokes",7000);
+      delayRedirect("https://www.rd.com/funny/jokes/?_humor=jokes",5000);
     {% elif emotion == 'love' %}
-      delayRedirect("https://www.hotstar.com/in/home?ref=%2Fin", 7000);
+      delayRedirect("https://www.hotstar.com/in/home?ref=%2Fin", 5000);
     {% elif emotion == 'fear' %}
-      delayRedirect("https://english.pratilipi.com/", 7000);
+      delayRedirect("https://english.pratilipi.com/", 5000);
     {% elif emotion == 'surprise' %}
-      delayRedirect("https://novni.com/write-anonymously", 7000);
+      delayRedirect("https://novni.com/write-anonymously", 5000);
     {% endif %}
   </script>
 </body>

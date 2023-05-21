@@ -61,11 +61,8 @@ y_train = y[1600:]
 X_train = X_train.sorted_indices()
 X_val = X_val.sorted_indices()
 # inscribing the model into fit method
-history = model.fit(X_train, y_train, epochs=30, batch_size=64, shuffle=True, validation_data=(X_val, y_val))
-# save the model
-model.save('saved_model.h5')
-# load the saved model
-loaded_model = load_model('saved_model.h5')
+history = model.fit(X_train, y_train, epochs=20, batch_size=64, shuffle=True, validation_data=(X_val, y_val))
+
 
 # testing part of the model
 # load the test-data
@@ -89,6 +86,12 @@ loaded_model = load_model('saved_model.h5')
 # Print test accuracy
 # print('Test accuracy:', test_acc)
 # print('loss : ', test_loss)
+
+
+# save the model
+model.save('saved_model.h5')
+# load the saved model
+loaded_model = load_model('saved_model.h5')
 
 
 # predict method which works on the saved model
